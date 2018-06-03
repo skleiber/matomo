@@ -112,8 +112,6 @@ class TestsRunUI extends ConsoleCommand
             $phantomJsOptions[] = "--debug=true";
         }
 
-        $phantomJsOptions[] = "--ignore-ssl-errors=true";
-
         if ($extraOptions) {
             $options[] = $extraOptions;
         }
@@ -123,7 +121,7 @@ class TestsRunUI extends ConsoleCommand
 
         $specs = implode(" ", $specs);
 
-        $cmd = "phantomjs " . $phantomJsOptions . " '" . PIWIK_INCLUDE_PATH . "/tests/lib/screenshot-testing/run-tests.js' $options $specs";
+        $cmd = "node " . $phantomJsOptions . " '" . PIWIK_INCLUDE_PATH . "/tests/lib/screenshot-testing/run-tests.js' $options $specs";
 
         $output->writeln('Executing command: <info>' . $cmd . '</info>');
         $output->writeln('');
