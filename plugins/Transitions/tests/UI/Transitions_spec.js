@@ -14,7 +14,7 @@ describe("Transitions", function () {
         urlBase = 'module=CoreHome&action=index&' + generalParams
         ;
 
-    it('should load the transitions popup correctly for the page titles report', function (done) {
+    it('should load the transitions popup correctly for the page titles report', async function() {
         expect.screenshot('transitions_popup_titles').to.be.captureSelector('.ui-dialog', function (page) {
             page.load("?" + urlBase + "#?" + generalParams + "&category=General_Actions&subcategory=Actions_SubmenuPageTitles");
 
@@ -24,7 +24,7 @@ describe("Transitions", function () {
         }, done);
     });
 
-    it('should load the transitions popup correctly for the page urls report', function (done) {
+    it('should load the transitions popup correctly for the page urls report', async function() {
         expect.screenshot('transitions_popup_urls').to.be.captureSelector('.ui-dialog', function (page) {
             page.load("?" + urlBase + "#?" + generalParams + "&category=General_Actions&subcategory=General_Pages&"
                     + "popover=RowAction$3ATransitions$3Aurl$3Ahttp$3A$2F$2Fpiwik.net$2Fdocs$2Fmanage-websites$2F");
