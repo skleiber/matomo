@@ -8,69 +8,50 @@
  */
 
 describe("QuickAccess", function () {
+    const selectorToCapture = ".quick-access,.quick-access .dropdown";
+    const url = "?module=CoreHome&action=index&idSite=1&period=year&date=2012-08-09";
 
-    var selectorToCapture = ".quick-access,.quick-access .dropdown";
-
-    this.timeout(0);
-
-    var url = "?module=CoreHome&action=index&idSite=1&period=year&date=2012-08-09";
-
-    function enterSearchTerm(page, searchTermToAdd)
-    {
-        page.sendKeys(".quick-access input", searchTermToAdd);
-    }
-
-    function captureSelector(screenshotName, done, selector, callback)
-    {
-        expect.screenshot(screenshotName).to.be.captureSelector(selector, callback, done);
-    }
-
-    function capture(screenshotName, done, callback)
-    {
-        captureSelector(screenshotName, done, selectorToCapture, callback);
+    async function enterSearchTerm(searchTermToAdd) {
+        await page.focus(".quick-access input");
+        await page.keys.type(searchTermToAdd);
+        await page.waitForNetworkIdle();
     }
 
     it("should be displayed", async function () {
-        capture('initially', done, function (page) {
-            page.goto(url);
-        });
+        await page.goto(url);
+        expect(await page.screenshotSelector(selectorToCapture)).to.matchImage('initially');
     });
 
     it("should search for something and update view", async function () {
-        capture('search_1', done, function (page) {
-            enterSearchTerm(page, 'b');
-        });
+        await enterSearchTerm('b');
+        expect(await page.screenshotSelector(selectorToCapture)).to.matchImage('search_1');
     });
 
     it("should search again when typing another letter", async function () {
-        capture('search_2', done, function (page) {
-            enterSearchTerm(page, 'a');
-        });
+        await enterSearchTerm(page, 'a');
+        expect(await page.screenshotSelector(selectorToCapture)).to.matchImage('search_2');
     });
 
     it("should show message if no results", async function () {
-        capture('search_no_result', done, function (page) {
-            enterSearchTerm(page, 'x');
-        });
+        await enterSearchTerm(page, 'x');
+        expect(await page.screenshotSelector(selectorToCapture)).to.matchImage('search_no_result');
     });
 
     it("should be possible to activate via shortcut", async function () {
-        capture('shortcut', done, function (page) {
-            page.goto(url);
-            page.sendKeys("body", 'f');
-        });
+        await page.goto(url);
+        await page.focus('body');
+        await page.keys.type('f');
+        expect(await page.screenshotSelector(selectorToCapture)).to.matchImage('shortcut');
     });
 
     it("should search for websites", async function () {
-        capture('search_sites', done, function (page) {
-            enterSearchTerm(page, 'si');
-        });
+        await enterSearchTerm('si');
+        expect(await page.screenshotSelector(selectorToCapture)).to.matchImage('search_sites');
     });
 
     it("clicking on a category should show all items that belong to that category", async function () {
-        capture('search_category', done, function (page) {
-            page.click('.quick-access-category:first');
-        });
+        const element = await page.jQuery('.quick-access-category:first');
+        await element.click();
+        expect(await page.screenshotSelector(selectorToCapture)).to.matchImage('search_category');
     });
-
 });
