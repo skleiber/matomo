@@ -12,9 +12,17 @@ describe("QuickAccess", function () {
     const url = "?module=CoreHome&action=index&idSite=1&period=year&date=2012-08-09";
 
     async function enterSearchTerm(searchTermToAdd) {
+        await page.evaluate(function () {
+            $('.quick-access input').val('');
+        });
+
         await page.focus(".quick-access input");
-        await page.keys.type(searchTermToAdd);
+        await page.keyboard.type(searchTermToAdd);
         await page.waitForNetworkIdle();
+
+        await page.evaluate(function () {
+            $('.quick-access input').blur();
+        });
     }
 
     it("should be displayed", async function () {
@@ -24,23 +32,31 @@ describe("QuickAccess", function () {
 
     it("should search for something and update view", async function () {
         await enterSearchTerm('b');
+        await page.waitFor(100);
         expect(await page.screenshotSelector(selectorToCapture)).to.matchImage('search_1');
     });
 
     it("should search again when typing another letter", async function () {
-        await enterSearchTerm(page, 'a');
+        await enterSearchTerm('ab');
+        await page.waitFor(100);
         expect(await page.screenshotSelector(selectorToCapture)).to.matchImage('search_2');
     });
 
     it("should show message if no results", async function () {
-        await enterSearchTerm(page, 'x');
+        await enterSearchTerm('xab');
+        await page.waitFor(100);
         expect(await page.screenshotSelector(selectorToCapture)).to.matchImage('search_no_result');
     });
 
     it("should be possible to activate via shortcut", async function () {
         await page.goto(url);
         await page.focus('body');
-        await page.keys.type('f');
+        await page.keyboard.type('f');
+
+        await page.evaluate(function () {
+            $('.quick-access input').blur();
+        });
+
         expect(await page.screenshotSelector(selectorToCapture)).to.matchImage('shortcut');
     });
 
@@ -52,6 +68,7 @@ describe("QuickAccess", function () {
     it("clicking on a category should show all items that belong to that category", async function () {
         const element = await page.jQuery('.quick-access-category:first');
         await element.click();
+        await page.waitForNetworkIdle();
         expect(await page.screenshotSelector(selectorToCapture)).to.matchImage('search_category');
     });
 });
