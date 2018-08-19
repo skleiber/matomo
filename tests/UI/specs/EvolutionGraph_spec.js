@@ -47,7 +47,8 @@ describe("EvolutionGraph", function () {
     });
 
     it("should show multiple metrics when another metric picked", async function () {
-        const element = await page.jQuery('.jqplot-seriespicker-popover input:not(:checked):first + label');
+        await page.waitForSelector('.jqplot-seriespicker-popover input');
+        var element = await page.jQuery('.jqplot-seriespicker-popover input:not(:checked):first + label');
         await element.click();
         await page.waitForNetworkIdle();
 
