@@ -44,7 +44,7 @@ class Actions extends BaseFilter
             foreach ($dataTable->getRows() as $row) {
                 $url = $row->getMetadata('url');
                 if ($url) {
-                    $row->setMetadata('segmentValue', urldecode($url));
+                    $row->setMetadata('segmentValue', urlencode($url));
                 }
 
                 // remove the default action name 'index' in the end of flattened urls and prepend $actionDelimiter
@@ -63,7 +63,7 @@ class Actions extends BaseFilter
 
         // TODO can we remove this one again?
         $table->queueFilter('GroupBy', array('label', function ($label) {
-            return urldecode($label);
+            return urlencode($label);
         }));
 
         foreach ($table->getRowsWithoutSummaryRow() as $row) {
