@@ -44,7 +44,9 @@ class Actions extends BaseFilter
             foreach ($dataTable->getRows() as $row) {
                 $url = $row->getMetadata('url');
                 if ($url) {
-                    $row->setMetadata('segmentValue', $url);
+                    // encoding the value since Segment will decode the condition AND the value. without encoding here, segments
+                    // that for URLs w/ plus signs will decode to whitespace, and select no data.
+                    $row->setMetadata('segmentValue', urlencode($url));
                 }
 
                 // remove the default action name 'index' in the end of flattened urls and prepend $actionDelimiter
@@ -60,6 +62,10 @@ class Actions extends BaseFilter
                 }
             }
         });
+
+        $table->queueFilter('GroupBy', array('label', function ($label) {
+            return urlencode($label); // to make up for SafeDecodeLabel later
+        }));
 
         foreach ($table->getRowsWithoutSummaryRow() as $row) {
             $subtable = $row->getSubtable();
