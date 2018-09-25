@@ -120,7 +120,7 @@ var SegmentedVisitorLog = function() {
         var requestParams = {
             module: 'Live',
             action: 'indexVisitorLog',
-            segment: encodeURIComponent(segment),
+            segment: segment,
             disableLink: 1,
             small: 1
         };
