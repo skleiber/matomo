@@ -39,8 +39,8 @@ class SafeDecodeLabel extends BaseFilter
         if (empty($value)) {
             return $value;
         }
-        $raw = urldecode($value);
-        $value = htmlspecialchars_decode($raw, ENT_QUOTES);
+
+        $value = htmlspecialchars_decode($value, ENT_QUOTES);
 
         // ENT_IGNORE so that if utf8 string has some errors, we simply discard invalid code unit sequences
         $style = ENT_QUOTES | ENT_IGNORE;
