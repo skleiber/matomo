@@ -31,8 +31,9 @@ class Actions extends BaseFilter
      */
     public function filter($table)
     {
-        $table->filter(function (DataTable $dataTable) {
+        $isFlattening = Common::getRequestVar('flat', 0);
 
+        $table->filter(function (DataTable $dataTable) use ($isFlattening) {
             $defaultActionName = Config::getInstance()->General['action_default_name'];
 
             // for BC, we read the old style delimiter first (see #1067)
@@ -50,7 +51,7 @@ class Actions extends BaseFilter
                 }
 
                 // remove the default action name 'index' in the end of flattened urls and prepend $actionDelimiter
-                if (Common::getRequestVar('flat', 0)) {
+                if ($isFlattening) {
                     $label = $row->getColumn('label');
                     $stringToSearch = $actionDelimiter.$defaultActionName;
                     if (substr($label, -strlen($stringToSearch)) == $stringToSearch) {
@@ -63,9 +64,11 @@ class Actions extends BaseFilter
             }
         });
 
-        $table->queueFilter('GroupBy', array('label', function ($label) {
-            return urlencode($label); // to make up for SafeDecodeLabel later
-        }));
+        if (!$isFlattening) { // SafeDecodeLabel is not called subtables are requested during flattening
+            $table->queueFilter('GroupBy', array('label', function ($label) {
+                return urlencode($label); // to make up for SafeDecodeLabel later
+            }));
+        }
 
         foreach ($table->getRowsWithoutSummaryRow() as $row) {
             $subtable = $row->getSubtable();
