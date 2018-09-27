@@ -159,6 +159,8 @@ class StrangeCharacterTest extends SystemTestCase
         ];
     }
 
+    // TODO: test w/ forced urldecode()
+
     public function testSegmentUrl()
     {
         // TODO
