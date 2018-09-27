@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<results>
+	<result date="2012-01-23,2012-01-29" />
+	<result date="2012-01-30,2012-02-05">
+		<row>
+			<label>cv name &amp;=+@:?#</label>
+			<nb_visits>1</nb_visits>
+			<nb_actions>3</nb_actions>
+			<max_actions>3</max_actions>
+			<sum_visit_length>1441</sum_visit_length>
+			<bounce_count>0</bounce_count>
+			<nb_visits_converted>0</nb_visits_converted>
+			<sum_daily_nb_uniq_visitors>1</sum_daily_nb_uniq_visitors>
+			<sum_daily_nb_users>0</sum_daily_nb_users>
+			<slots>
+				<row>
+					<scope>visit</scope>
+					<index>1</index>
+				</row>
+			</slots>
+			<is_aggregate>1</is_aggregate>
+		</row>
+		<row>
+			<label>cv name &amp;=+@:?# - cv value &amp;=+@:?#</label>
+			<nb_visits>1</nb_visits>
+			<nb_actions>3</nb_actions>
+			<max_actions>3</max_actions>
+			<sum_visit_length>1441</sum_visit_length>
+			<bounce_count>0</bounce_count>
+			<nb_visits_converted>0</nb_visits_converted>
+			<sum_daily_nb_uniq_visitors>1</sum_daily_nb_uniq_visitors>
+			<sum_daily_nb_users>0</sum_daily_nb_users>
+			<is_aggregate>0</is_aggregate>
+		</row>
+		<row>
+			<label>_pk_scat</label>
+			<nb_visits>1</nb_visits>
+			<nb_actions>1</nb_actions>
+			<sum_daily_nb_uniq_visitors>1</sum_daily_nb_uniq_visitors>
+			<slots>
+				<row>
+					<scope>page</scope>
+					<index>4</index>
+				</row>
+			</slots>
+			<is_aggregate>1</is_aggregate>
+		</row>
+		<row>
+			<label>_pk_scat - search &amp;=+@:?# category</label>
+			<nb_visits>1</nb_visits>
+			<nb_actions>1</nb_actions>
+			<sum_daily_nb_uniq_visitors>1</sum_daily_nb_uniq_visitors>
+			<is_aggregate>0</is_aggregate>
+		</row>
+		<row>
+			<label>_pkc</label>
+			<nb_visits>1</nb_visits>
+			<nb_actions>1</nb_actions>
+			<sum_daily_nb_uniq_visitors>1</sum_daily_nb_uniq_visitors>
+			<slots>
+				<row>
+					<scope>page</scope>
+					<index>5</index>
+				</row>
+			</slots>
+			<is_aggregate>1</is_aggregate>
+		</row>
+		<row>
+			<label>_pkn</label>
+			<nb_visits>1</nb_visits>
+			<nb_actions>1</nb_actions>
+			<sum_daily_nb_uniq_visitors>1</sum_daily_nb_uniq_visitors>
+			<slots>
+				<row>
+					<scope>page</scope>
+					<index>4</index>
+				</row>
+			</slots>
+			<is_aggregate>1</is_aggregate>
+		</row>
+		<row>
+			<label>_pkp</label>
+			<nb_visits>1</nb_visits>
+			<nb_actions>1</nb_actions>
+			<sum_daily_nb_uniq_visitors>1</sum_daily_nb_uniq_visitors>
+			<slots>
+				<row>
+					<scope>page</scope>
+					<index>2</index>
+				</row>
+			</slots>
+			<is_aggregate>1</is_aggregate>
+		</row>
+		<row>
+			<label>_pkp - 666</label>
+			<nb_visits>1</nb_visits>
+			<nb_actions>1</nb_actions>
+			<sum_daily_nb_uniq_visitors>1</sum_daily_nb_uniq_visitors>
+			<is_aggregate>0</is_aggregate>
+		</row>
+		<row>
+			<label>_pks</label>
+			<nb_visits>1</nb_visits>
+			<nb_actions>1</nb_actions>
+			<sum_daily_nb_uniq_visitors>1</sum_daily_nb_uniq_visitors>
+			<slots>
+				<row>
+					<scope>page</scope>
+					<index>3</index>
+				</row>
+			</slots>
+			<is_aggregate>1</is_aggregate>
+		</row>
+		<row>
+			<label>_pkc - PROD CAT &amp;=+@:?# abc</label>
+			<nb_visits>1</nb_visits>
+			<nb_actions>1</nb_actions>
+			<price_viewed>666</price_viewed>
+			<sum_daily_nb_uniq_visitors>1</sum_daily_nb_uniq_visitors>
+			<is_aggregate>0</is_aggregate>
+		</row>
+		<row>
+			<label>_pkn - PRODUCT &amp;=+@:?# name</label>
+			<nb_visits>1</nb_visits>
+			<nb_actions>1</nb_actions>
+			<price_viewed>666</price_viewed>
+			<sum_daily_nb_uniq_visitors>1</sum_daily_nb_uniq_visitors>
+			<is_aggregate>0</is_aggregate>
+		</row>
+		<row>
+			<label>_pks - SKU VERY &amp;=+@:?# nice indeed</label>
+			<nb_visits>1</nb_visits>
+			<nb_actions>1</nb_actions>
+			<price_viewed>666</price_viewed>
+			<sum_daily_nb_uniq_visitors>1</sum_daily_nb_uniq_visitors>
+			<is_aggregate>0</is_aggregate>
+		</row>
+	</result>
+	<result date="2012-02-06,2012-02-12" />
+	<result date="2012-02-13,2012-02-19" />
+	<result date="2012-02-20,2012-02-26" />
+	<result date="2012-02-27,2012-03-04" />
+</results>

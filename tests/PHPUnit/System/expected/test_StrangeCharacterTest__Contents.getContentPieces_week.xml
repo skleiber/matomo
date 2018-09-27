@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<result>
+	<row>
+		<label>content/&amp;=+@:?#/path/to/file.jpg</label>
+		<nb_visits>1</nb_visits>
+		<nb_impressions>1</nb_impressions>
+		<nb_interactions>1</nb_interactions>
+		<sum_daily_nb_uniq_visitors>1</sum_daily_nb_uniq_visitors>
+		<interaction_rate>100%</interaction_rate>
+		<contentTarget>http://strangerdanger.org/&amp;=+@:/up</contentTarget>
+		<segment>contentPiece==content%2F%26amp%3B%3D%2B%40%3A%3F%23%2Fpath%2Fto%2Ffile.jpg</segment>
+	</row>
+</result>

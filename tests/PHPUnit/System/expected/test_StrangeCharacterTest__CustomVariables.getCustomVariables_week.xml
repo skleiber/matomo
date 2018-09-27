@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<result>
+	<row>
+		<label>cv name &amp;=+@:?#</label>
+		<nb_visits>1</nb_visits>
+		<nb_actions>3</nb_actions>
+		<max_actions>3</max_actions>
+		<sum_visit_length>1441</sum_visit_length>
+		<bounce_count>0</bounce_count>
+		<nb_visits_converted>0</nb_visits_converted>
+		<sum_daily_nb_uniq_visitors>1</sum_daily_nb_uniq_visitors>
+		<sum_daily_nb_users>0</sum_daily_nb_users>
+		<slots>
+			<row>
+				<scope>visit</scope>
+				<index>1</index>
+			</row>
+		</slots>
+		<segment>customVariableName==cv+name+%26%3D%2B%40%3A%3F%23</segment>
+		<subtable>
+			<row>
+				<label>cv value &amp;=+@:?#</label>
+				<nb_visits>1</nb_visits>
+				<nb_actions>3</nb_actions>
+				<max_actions>3</max_actions>
+				<sum_visit_length>1441</sum_visit_length>
+				<bounce_count>0</bounce_count>
+				<nb_visits_converted>0</nb_visits_converted>
+				<sum_daily_nb_uniq_visitors>1</sum_daily_nb_uniq_visitors>
+				<sum_daily_nb_users>0</sum_daily_nb_users>
+			</row>
+		</subtable>
+	</row>
+</result>

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<result>
+	<row>
+		<label>action &amp;=+@:?#</label>
+		<nb_visits>1</nb_visits>
+		<nb_events>1</nb_events>
+		<nb_events_with_value>1</nb_events_with_value>
+		<sum_event_value>150</sum_event_value>
+		<min_event_value>150</min_event_value>
+		<max_event_value>150</max_event_value>
+		<sum_daily_nb_uniq_visitors>1</sum_daily_nb_uniq_visitors>
+		<avg_event_value>150</avg_event_value>
+		<segment>eventAction==action+%26amp%3B%3D%2B%40%3A%3F%23</segment>
+		<subtable>
+			<row>
+				<label>name &amp;=+@:?#</label>
+				<nb_visits>1</nb_visits>
+				<nb_events>1</nb_events>
+				<nb_events_with_value>1</nb_events_with_value>
+				<sum_event_value>150</sum_event_value>
+				<min_event_value>150</min_event_value>
+				<max_event_value>150</max_event_value>
+				<sum_daily_nb_uniq_visitors>1</sum_daily_nb_uniq_visitors>
+				<avg_event_value>150</avg_event_value>
+			</row>
+		</subtable>
+	</row>
+</result>
