@@ -14,6 +14,9 @@ use Piwik\DataTable\BaseFilter;
 use Piwik\DataTable\Row;
 use Piwik\DataTable;
 
+// TODO: the log importer urlencoded URLs & referrer URLs when creating page titles. need to detect these
+// and conditionally urldecode
+// TODO: should also try to put all this code in SafeDecodeLabel
 class Actions extends BaseFilter
 {
     /**
