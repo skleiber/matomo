@@ -912,7 +912,7 @@ class LogAggregator
             } else {
                 $lowerBound = $gap[0];
 
-                $selectAs  = $selectColumnPrefix . ($lowerBound + 1) . urlencode('+');
+                $selectAs  = $selectColumnPrefix . ($lowerBound + 1) . '+';
                 $selects[] = "sum(case when $table.$column > $lowerBound $extraCondition then 1 else 0 end) as `$selectAs`";
             }
         }

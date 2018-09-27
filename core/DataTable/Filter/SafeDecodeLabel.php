@@ -36,7 +36,7 @@ class SafeDecodeLabel extends BaseFilter
         $this->columnToDecode = 'label';
     }
 
-    private static function shouldUrlDecodeValue(DataTable $table)
+    public static function shouldUrlDecodeValue(DataTable $table)
     {
         $archivedDate = $table->getMetadata(DataTable::ARCHIVED_DATE_METADATA_NAME);
         if (empty($archivedDate)) {

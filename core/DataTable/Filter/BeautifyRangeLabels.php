@@ -51,6 +51,11 @@ class BeautifyRangeLabels extends ColumnCallbackReplace
     protected $labelPlural;
 
     /**
+     * @var bool
+     */
+    protected $shouldEncodePlus;
+
+    /**
      * Constructor.
      *
      * @param DataTable $table The DataTable that will be filtered.
@@ -66,6 +71,7 @@ class BeautifyRangeLabels extends ColumnCallbackReplace
 
         $this->labelSingular = $labelSingular;
         $this->labelPlural   = $labelPlural;
+        $this->shouldEncodePlus = SafeDecodeLabel::shouldUrlDecodeValue($table);
     }
 
     /**
@@ -95,7 +101,7 @@ class BeautifyRangeLabels extends ColumnCallbackReplace
             sscanf($value, "%d", $lowerBound);
 
             if ($lowerBound !== null) {
-                $plusEncoded = urlencode('+');
+                $plusEncoded = $this->shouldEncodePlus ? urlencode('+') : '+';
                 $plusLen = strlen($plusEncoded);
                 $len = strlen($value);
 

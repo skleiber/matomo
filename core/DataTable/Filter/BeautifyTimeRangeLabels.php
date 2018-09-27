@@ -115,7 +115,8 @@ class BeautifyTimeRangeLabels extends BeautifyRangeLabels
             return sprintf($this->labelSecondsPlural, $lowerBound);
         } else {
             // since we're using minutes, we use floor so 1801s+ will be 30m+ and not 31m+
-            return sprintf($this->labelPlural, "" . floor($lowerBound / 60) . urlencode('+'));
+            $plus = $this->shouldEncodePlus ? urlencode($plus) : '+';
+            return sprintf($this->labelPlural, "" . floor($lowerBound / 60) . $plus);
         }
     }
 }
