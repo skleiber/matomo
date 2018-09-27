@@ -10,6 +10,7 @@ namespace Piwik\DataTable\Filter;
 
 use Piwik\DataTable;
 use Piwik\DataTable\BaseFilter;
+use Piwik\Date;
 
 /**
  * Sanitizes DataTable labels as an extra precaution. Called internally by Piwik.
@@ -17,6 +18,13 @@ use Piwik\DataTable\BaseFilter;
  */
 class SafeDecodeLabel extends BaseFilter
 {
+    /**
+     * On this day we changed the default behavior of this filter. Before it called `urldecode()` on the label
+     * which would turn '+' signs, for instance, into spaces. Now we don't do this, but there may be very old
+     * archived data that has URL encoded labels. So for reports archived before this date, we decode the URL.
+     */
+    const DATE_OF_URLDECODE_CHANGE = '2018-09-25';
+
     private $columnToDecode;
 
     /**
@@ -28,19 +36,38 @@ class SafeDecodeLabel extends BaseFilter
         $this->columnToDecode = 'label';
     }
 
+    private static function shouldUrlDecodeValue(DataTable $table)
+    {
+        $archivedDate = $table->getMetadata(DataTable::ARCHIVED_DATE_METADATA_NAME);
+        if (empty($archivedDate)) {
+            return false;
+        }
+        $archivedDate = Date::factory($archivedDate);
+
+        $dateOfChange = Date::factory(self::DATE_OF_URLDECODE_CHANGE);
+
+        $shouldDecode = $archivedDate->isEarlier($dateOfChange);
+        return $shouldDecode;
+    }
+
     /**
      * Decodes the given value
      *
      * @param string $value
      * @return mixed|string
      */
-    public static function decodeLabelSafe($value)
+    public static function decodeLabelSafe($value, $shouldUrlDecode = true)
     {
         if (empty($value)) {
             return $value;
         }
 
-        $value = htmlspecialchars_decode($value, ENT_QUOTES);
+        $raw = $shouldUrlDecode ? urldecode($shouldUrlDecode) : $value;
+        if ($shouldUrlDecode) {
+            $raw = urldecode($value);
+        }
+
+        $value = htmlspecialchars_decode($raw, ENT_QUOTES);
 
         // ENT_IGNORE so that if utf8 string has some errors, we simply discard invalid code unit sequences
         $style = ENT_QUOTES | ENT_IGNORE;
@@ -59,10 +86,12 @@ class SafeDecodeLabel extends BaseFilter
      */
     public function filter($table)
     {
+        $shouldUrlDecode = self::shouldUrlDecodeValue($table);
+
         foreach ($table->getRows() as $row) {
             $value = $row->getColumn($this->columnToDecode);
             if ($value !== false) {
-                $value = self::decodeLabelSafe($value);
+                $value = self::decodeLabelSafe($value, $shouldUrlDecode);
                 $row->setColumn($this->columnToDecode, $value);
 
                 $this->filterSubTable($row);
