@@ -154,8 +154,9 @@ var Piwik_Overlay_Client = (function () {
             if (additionalParams) {
                 url += '&' + additionalParams;
             }
-
+console.log(url);
             $.getJSON(url + "&jsoncallback=?", function (data) {
+                console.log(JSON.stringify(data));
                 if (typeof data.result != 'undefined' && data.result == 'error') {
                     alert('Error: ' + data.message);
                 }

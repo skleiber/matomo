@@ -34,7 +34,7 @@ describe("Overlay", function () {
         testEnvironment.callApi("SitesManager.setSiteAliasUrls", {idSite: 3, urls: []}, done);
     });
 
-    it("should load correctly", function (done) {
+    it.only("should load correctly", function (done) {
         expect.screenshot("loaded").to.be.capture(function (page) {
             page.load(url);
 
