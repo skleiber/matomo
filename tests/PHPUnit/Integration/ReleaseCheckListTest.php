@@ -42,7 +42,8 @@ class ReleaseCheckListTest extends \PHPUnit_Framework_TestCase
         $allowed_time_difference = 60 * 60 * 24; #seconds
 
         $branch = getenv('TRAVIS_BRANCH') ?: `git rev-parse --abbrev-ref HEAD`;
-
+        print "BRANCH: $branch\n";
+print shell_exec("git log -1 origin/$branch " . PIWIK_DOCUMENT_ROOT . "/plugins/Morpheus/fonts/matomo.woff")."\n";
         $woff_last_change = strtotime(shell_exec("git log -1 origin/$branch --format='%ad' " . PIWIK_DOCUMENT_ROOT . "/plugins/Morpheus/fonts/matomo.woff"));
         $woff2_last_change = strtotime(shell_exec("git log -1 origin/$branch --format='%ad' " . PIWIK_DOCUMENT_ROOT . "/plugins/Morpheus/fonts/matomo.woff2"));
         print $woff_last_change."\n";
