@@ -41,6 +41,9 @@ class ReleaseCheckListTest extends \PHPUnit_Framework_TestCase
     public function test_woff2_isUpToDate() {
         $allowed_time_difference = 60 * 60 * 24; #seconds
 
+        print "git log -1 --format='%ad' " . PIWIK_DOCUMENT_ROOT . "/plugins/Morpheus/fonts/matomo.woff\n";
+        print shell_exec("git log -1 --format='%ad' " . PIWIK_DOCUMENT_ROOT . "/plugins/Morpheus/fonts/matomo.woff")."\n";
+
         print "git log -1 --format='%ad' " . PIWIK_DOCUMENT_ROOT . "/plugins/Morpheus/fonts/matomo.woff2\n";
         print shell_exec("git log -1 --format='%ad' " . PIWIK_DOCUMENT_ROOT . "/plugins/Morpheus/fonts/matomo.woff2")."\n";
         $woff_last_change = strtotime(shell_exec("git log -1 --format='%ad' " . PIWIK_DOCUMENT_ROOT . "/plugins/Morpheus/fonts/matomo.woff"));
